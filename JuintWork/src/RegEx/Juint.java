@@ -3,6 +3,7 @@ package RegEx;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Date;
 
 import org.junit.jupiter.api.Test;
 @SuppressWarnings("deprecation")
@@ -71,5 +72,28 @@ class Juint {
 		list.addItem(input[0], input[1], input[2]);
 		assertEquals(null, list.getItem(input[0]+"1"));
 	}
-	
+	@Test
+	void experationWorks() {
+		String[] input= {"56465444166846464646464649646868436", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
+		WarehouseItemList list = new WarehouseItemList();
+		list.addItem(input[0], input[1], input[2]);
+		list.addExperation(input[0], new Date(31,1,25));
+		assertEquals("validName expires on: "+new Date(31,1,25).toString(),list.getItemExperation(input[0]));
+	}
+	@Test
+	void experationReturnsNullWithNonExistantId() {
+		String[] input= {"56465444166846464646464649646868436", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
+		WarehouseItemList list = new WarehouseItemList();
+		list.addItem(input[0], input[1], input[2]);
+		list.addExperation(input[0], new Date(31,1,25));
+		assertEquals(null,list.getItemExperation(input[0]+1));
+	}
+	@Test
+	void invalidIdCausesNoErrorsInExperation() {
+		String[] input= {"56465444166846464646464649646868436b", "validName?!>@#>?", "klasgfn! iewhbfiBWEG. $120.00?"};
+		WarehouseItemList list = new WarehouseItemList();
+		list.addItem(input[0], input[1], input[2]);
+		list.addExperation(input[0], new Date(31,1,25));
+		assertEquals(null,list.getItemExperation(input[0]+1));
+	}
 }
