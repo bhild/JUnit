@@ -1,6 +1,7 @@
 package RegEx;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class WarehouseItemList {
 	private ArrayList<String[]> itemList = new ArrayList<String[]>();
@@ -67,25 +68,40 @@ public class WarehouseItemList {
 	}
 	public String[] getItem(String id) {
 		int index = elementById(id);
-		if (index<itemList.size()) {
+		if (index<itemList.size()&&index>=0) {
 			return itemList.get(index);
 		}
 		return null;
 	}
-	public void addExperation(String id,String date) {
-		if (isValidId(id)) {
-			
+	public void addExperation(String id,Date date) {
+		if (isValidId(id)&&elementById(id)>=0) {
+			experationList.add(new String[] {id,date.toString()});
 		}
 	}
+	public String getItemExperation(String id) {
+		//returns only name
+		if(isValidId(id)&&experationById(id)>=0) {
+			return itemList.get(elementById(id))[1]+" expires on: "+experationList.get(experationById(id))[1];
+		}
+		return null;
+	}
 	private int elementById(String id) {
-		int out = 0;
+		int out = -1;
 		for (int i = 0; i < itemList.size(); i++) {
 			if (itemList.get(i)[0].equals(id)) {
 				out = i;
 			}
 		}
 		return out;
-		
+	}
+	private int experationById(String id) {
+		int out = -1;
+		for (int i = 0; i < experationList.size(); i++) {
+			if (experationList.get(i)[0].equals(id)) {
+				out = i;
+			}
+		}
+		return out;
 	}
 	public String toString() {
 		String out = "";
