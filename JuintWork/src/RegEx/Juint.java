@@ -3,8 +3,9 @@ package RegEx;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Test;
 
+import org.junit.jupiter.api.Test;
+@SuppressWarnings("deprecation")
 class Juint {
 
 	@Test
@@ -42,5 +43,33 @@ class Juint {
 		String[] input= {"909-365a", "tempName", "No description provided.--''()())(66."};
 		assertEquals(false, new WarehouseItemList().isValidItem(input[0], input[1], input[2]));
 	}
-
+	@Test
+	void canSetAndGet() {
+		String[] input= {"56465444166846464646464649646868436", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
+		WarehouseItemList list = new WarehouseItemList();
+		list.addItem(input[0], input[1], input[2]);
+		assertArrayEquals(input,list.getItem(input[0]));
+	}
+	@Test
+	void canSetAndGetWhenInvalid() {
+		String[] input= {"56465444166846464646464649646868436", "validName?!>@#>?", "klasgfn! iewhbfiBWEG. $120.00?"};
+		WarehouseItemList list = new WarehouseItemList();
+		list.addItem(input[0], input[1], input[2]);
+		assertEquals(null, list.getItem(input[0]));
+	}
+	@Test
+	void noErrorWhenUseInvalidId() {
+		String[] input= {"56465444166846464646464649646868436b", "validName?!>@#>?", "klasgfn! iewhbfiBWEG. $120.00?"};
+		WarehouseItemList list = new WarehouseItemList();
+		list.addItem(input[0], input[1], input[2]);
+		assertEquals(null, list.getItem(input[0]));
+	}
+	@Test
+	void noErrorWhenIdNotExist() {
+		String[] input= {"56465444166846464646464649646868436", "validName?!>@#>?", "klasgfn! iewhbfiBWEG. $120.00?"};
+		WarehouseItemList list = new WarehouseItemList();
+		list.addItem(input[0], input[1], input[2]);
+		assertEquals(null, list.getItem(input[0]+"1"));
+	}
+	
 }

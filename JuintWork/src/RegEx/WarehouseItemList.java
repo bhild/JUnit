@@ -12,6 +12,7 @@ public class WarehouseItemList {
 	// determines any alphanumeric value with comma apostrophe dash parenthesis or $ which must be length 5 or more
 	// then checks to see if there is punctuation followed by ether space or a end line
 	// to allow cash amounts there can be a period that is not followed by an end line or a space
+	private ArrayList<String[]> experationList = new ArrayList<String[]>();
 	public WarehouseItemList() {
 		// TODO Auto-generated constructor stub
 	}
@@ -32,9 +33,11 @@ public class WarehouseItemList {
 		// Variable 2 -- name
 		// Variable 3 -- description
 		if (isValidId(id)&&isValidDescription(description)&&isValidName(name)) {
-			itemList.add(new String[] {name,id,description});//run if all vars are valid
+			itemList.add(new String[] {id,name,description});//run if all vars are valid
 		}else {
 			//prints out a syserr for the reason the input is invalid
+			/*
+			 * commented out for JUint testing
 			System.err.println("invalid WarehouseItem:");
 			for(int i = 0; i<3;i++) {
 				System.err.print("	");
@@ -57,14 +60,32 @@ public class WarehouseItemList {
 					}
 				}
 				System.err.println();
+				
 			}
+			*/
 		}
 	}
-	public String[] getItem(int id) {
-		if (id<itemList.size()) {
-			return getItem(id);
+	public String[] getItem(String id) {
+		int index = elementById(id);
+		if (index<itemList.size()) {
+			return itemList.get(index);
 		}
 		return null;
+	}
+	public void addExperation(String id,String date) {
+		if (isValidId(id)) {
+			
+		}
+	}
+	private int elementById(String id) {
+		int out = 0;
+		for (int i = 0; i < itemList.size(); i++) {
+			if (itemList.get(i)[0].equals(id)) {
+				out = i;
+			}
+		}
+		return out;
+		
 	}
 	public String toString() {
 		String out = "";
