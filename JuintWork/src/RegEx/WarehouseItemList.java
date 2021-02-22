@@ -85,6 +85,14 @@ public class WarehouseItemList {
 		}
 		return null;
 	}
+	public boolean itemHasExpired(String id) {
+		if(isValidId(id)&&experationById(id)>=0) {
+			if (new Date(experationList.get(experationById(id))[1]).before(new Date())) {
+				return true;
+			}
+		}
+		return false;
+	}
 	private int elementById(String id) {
 		int out = -1;
 		for (int i = 0; i < itemList.size(); i++) {
