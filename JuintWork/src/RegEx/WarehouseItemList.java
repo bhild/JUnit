@@ -1,8 +1,11 @@
 package RegEx;
 
 import java.util.ArrayList;
+
 import java.util.Date;
 
+
+@SuppressWarnings("deprecation")
 public class WarehouseItemList {
 	private ArrayList<String[]> itemList = new ArrayList<String[]>();
 	private String nameRegex = "([a-zA-Z]|[0-9 -]){3,}";
