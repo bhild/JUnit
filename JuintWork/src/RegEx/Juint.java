@@ -16,22 +16,22 @@ class Juint {
 	}
 	@Test
 	void everythingIsValidPriceInDescription() {
-		String[] input= {"56465444166846464646464649646868436", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
+		String[] input= {"340348643", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
 		assertEquals(true, new WarehouseItemList().isValidItem(input[0], input[1], input[2]));
 	}
 	@Test
 	void priceInDesTest2() {
-		String[] input= {"56465444166846464646464649646868436", "validName", "This item costs $120.00?"};
+		String[] input= {"430483432042", "validName", "This item costs $120.00?"};
 		assertEquals(true, new WarehouseItemList().isValidItem(input[0], input[1], input[2]));
 	}
 	@Test
 	void priceInDesTest3() {
-		String[] input= {"56465444166846464646464649646868436", "validName", "$19.00 is too much. This only costs $12."};
+		String[] input= {"145042586-7052-0485204-40542480-08574", "validName", "$19.00 is too much. This only costs $12."};
 		assertEquals(true, new WarehouseItemList().isValidItem(input[0], input[1], input[2]));
 	}
 	@Test
 	void priceInDesTest4() {
-		String[] input= {"56465444166846464646464649646868436", "validName", "Why pay $25 when you can pay less. This only costs $14."};
+		String[] input= {"4024860-7455240", "validName", "Why pay $25 when you can pay less. This only costs $14."};
 		assertEquals(true, new WarehouseItemList().isValidItem(input[0], input[1], input[2]));
 	}
 	@Test
@@ -41,26 +41,26 @@ class Juint {
 	}
 	@Test
 	void invalidPriceInDesUnPunct() {
-		String[] input= {"56465444166846464646464649646868436", "validName", "klasgfn! iewhbfiBWEG. $120.00"};
+		String[] input= {"542105634", "validName", "klasgfn! iewhbfiBWEG. $120.00"};
 		assertEquals(false, new WarehouseItemList().isValidItem(input[0], input[1], input[2]));
 	}
 	@Test
 	void invalidId() {
-		String[] input= {"909-365a", "tempName", "No description provided."};
+		String[] input= {"9y09-365a", "tempName", "No description provided."};
 		assertEquals(false, new WarehouseItemList().isValidItem(input[0], input[1], input[2]));
 	}
 	@Test
 	void invalidDescriptionNoPunctAndTooFewChars() {
-		String[] input= {"909-365", "te", "No description provided"};
+		String[] input= {"42310-12483", "te", "No description provided"};
 		assertEquals(false, new WarehouseItemList().isValidItem(input[0], input[1], input[2]));
 	}
 	@Test
 	void desTooShort() {
-		String[] input= {"909-365", "test", "No."};
+		String[] input= {"4532-45341", "test", "No."};
 		assertEquals(false, new WarehouseItemList().isValidItem(input[0], input[1], input[2]));
 	}
 	void desNoPunct() {
-		String[] input= {"909-365", "test", "This has no punctuation"};
+		String[] input= {"263-428-365", "test", "This has no punctuation"};
 		assertEquals(false, new WarehouseItemList().isValidItem(input[0], input[1], input[2]));
 	}
 	@Test
@@ -70,14 +70,14 @@ class Juint {
 	}
 	@Test
 	void canStoreAndGet0() {
-		String[] input= {"56465444166846464646464649646868436", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
+		String[] input= {"452412-45324505605", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
 		WarehouseItemList list = new WarehouseItemList();
 		list.addItem(input[0], input[1], input[2]);
 		assertArrayEquals(input,list.getItem(input[0]));
 	}
 	@Test
 	void canStoreAndGet1() {
-		String[] input= {"56465444166846464646464649646868436", "validName", "$19.00 is too much. This only costs $12."};
+		String[] input= {"5931238-5", "validName", "$19.00 is too much. This only costs $12."};
 		WarehouseItemList list = new WarehouseItemList();
 		list.addItem(input[0], input[1], input[2]);
 		assertArrayEquals(input,list.getItem(input[0]));
@@ -112,7 +112,7 @@ class Juint {
 	}
 	@Test
 	void canStoreAndGetWhenInvalid0() {
-		String[] input= {"56465444166846464646464649646868436", "validName?!>@#>?", "klasgfn! iewhbfiBWEG. $120.00"};
+		String[] input= {"703545%24-45244814t", "validName?!>@#>?", "klasgfn! iewhbfiBWEG. $120.00"};
 		WarehouseItemList list = new WarehouseItemList();
 		list.addItem(input[0], input[1], input[2]);
 		assertEquals(null, list.getItem(input[0]));
@@ -188,7 +188,7 @@ class Juint {
 	}
 	@Test
 	void noErrorWhenIdNotExist() {
-		String[] input= {"56465444166846464646464649646868436", "validName?!>@#>?", "klasgfn! iewhbfiBWEG. $120.00?"};
+		String[] input= {"0473048", "validName?!>@#>?", "klasgfn! iewhbfiBWEG. $120.00?"};
 		WarehouseItemList list = new WarehouseItemList();
 		list.addItem(input[0], input[1], input[2]);
 		assertEquals(null, list.getItem(input[0]+"1"));
@@ -211,7 +211,7 @@ class Juint {
 	}
 	@Test
 	void experationWorks2() {
-		String[] input= {"45345634521", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
+		String[] input= {"7453048", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
 		WarehouseItemList list = new WarehouseItemList();
 		list.addItem(input[0], input[1], input[2]);
 		list.addExperation(input[0], new Date(120,1,5));
@@ -227,7 +227,7 @@ class Juint {
 	}
 	@Test
 	void experationWorks4() {
-		String[] input= {"25482345", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
+		String[] input= {"3075345", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
 		WarehouseItemList list = new WarehouseItemList();
 		list.addItem(input[0], input[1], input[2]);
 		list.addExperation(input[0], new Date(56,0,30));
@@ -235,7 +235,7 @@ class Juint {
 	}
 	@Test
 	void experationWorks5() {
-		String[] input= {"35986-5964", "validName", "Is this a good des?"};
+		String[] input= {"0153078-0738530", "validName", "Is this a good des?"};
 		WarehouseItemList list = new WarehouseItemList();
 		list.addItem(input[0], input[1], input[2]);
 		list.addExperation(input[0], new Date(122,5,6));
@@ -243,7 +243,7 @@ class Juint {
 	}
 	@Test
 	void experationReturnsNullWithNonExistantIdTest0() {
-		String[] input= {"56465444166846464646464649646868436", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
+		String[] input= {"40534513-07534", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
 		WarehouseItemList list = new WarehouseItemList();
 		list.addItem(input[0], input[1], input[2]);
 		list.addExperation(input[0], new Date(121,1,25));
@@ -259,7 +259,7 @@ class Juint {
 	}
 	@Test
 	void experationReturnsNullWithNonExistantIdTest2() {
-		String[] input= {"563523-56345", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
+		String[] input= {"53043-3070", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
 		WarehouseItemList list = new WarehouseItemList();
 		list.addItem(input[0], input[1], input[2]);
 		list.addExperation(input[0], new Date(121,1,25));
@@ -267,7 +267,7 @@ class Juint {
 	}
 	@Test
 	void experationReturnsNullWithNonExistantIdTest3() {
-		String[] input= {"453453-4534523", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
+		String[] input= {"45312-73120", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
 		WarehouseItemList list = new WarehouseItemList();
 		list.addItem(input[0], input[1], input[2]);
 		list.addExperation(input[0], new Date(121,1,25));
@@ -275,7 +275,7 @@ class Juint {
 	}
 	@Test
 	void experationReturnsNullWithNonExistantIdTest4() {
-		String[] input= {"453453-543245", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
+		String[] input= {"4534-453", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
 		WarehouseItemList list = new WarehouseItemList();
 		list.addItem(input[0], input[1], input[2]);
 		list.addExperation(input[0], new Date(121,1,25));
@@ -283,7 +283,7 @@ class Juint {
 	}
 	@Test
 	void experationReturnsNullWithNonExistantIdTest5() {
-		String[] input= {"3453-435", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
+		String[] input= {"45342-54245", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
 		WarehouseItemList list = new WarehouseItemList();
 		list.addItem(input[0], input[1], input[2]);
 		list.addExperation(input[0], new Date(121,1,25));
@@ -291,8 +291,8 @@ class Juint {
 	}
 	@Test 
 	void experationDistinguishesBetweenIdsWhenMultipleExperationDatesPressent0(){
-		String[] input= {"3453-435", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
-		String[] input2= {"3453-4352", "Name2", "Cool description!"};
+		String[] input= {"742-54453-435", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
+		String[] input2= {"3453-4-453", "Name2", "Cool description!"};
 		WarehouseItemList list = new WarehouseItemList();
 		list.addItem(input[0], input[1], input[2]);
 		list.addItem(input2[0], input2[1], input2[2]);
@@ -302,8 +302,8 @@ class Juint {
 	}
 	@Test 
 	void experationDistinguishesBetweenIdsWhenMultipleExperationDatesPressent1(){
-		String[] input= {"3453-45", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
-		String[] input2= {"3453-4352", "Name2", "Cool description!"};
+		String[] input= {"453455-4453-5", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
+		String[] input2= {"45345-4534-1245", "Name2", "Cool description!"};
 		WarehouseItemList list = new WarehouseItemList();
 		list.addItem(input[0], input[1], input[2]);
 		list.addItem(input2[0], input2[1], input2[2]);
@@ -313,8 +313,8 @@ class Juint {
 	}
 	@Test 
 	void experationDistinguishesBetweenIdsWhenMultipleExperationDatesPressent2(){
-		String[] input= {"3453-435", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
-		String[] input2= {"3453-4352", "Name2", "Cool description!"};
+		String[] input= {"45345-45345", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
+		String[] input2= {"4353-45345", "Name2", "Cool description!"};
 		WarehouseItemList list = new WarehouseItemList();
 		list.addItem(input[0], input[1], input[2]);
 		list.addItem(input2[0], input2[1], input2[2]);
@@ -324,8 +324,8 @@ class Juint {
 	}
 	@Test 
 	void experationDistinguishesBetweenIdsWhenMultipleExperationDatesPressent3(){
-		String[] input= {"3453-435", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
-		String[] input2= {"3453-4352", "Name2", "Cool description!"};
+		String[] input= {"534-786345", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
+		String[] input2= {"345312-567", "Name2", "Cool description!"};
 		WarehouseItemList list = new WarehouseItemList();
 		list.addItem(input[0], input[1], input[2]);
 		list.addItem(input2[0], input2[1], input2[2]);
@@ -335,9 +335,9 @@ class Juint {
 	}
 	@Test 
 	void experationDistinguishesBetweenIdsWhenMultipleExperationDatesPressent4(){
-		String[] input= {"3453-435", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
-		String[] input2= {"3453-4352", "Name2", "Cool description!"};
-		String[] input3= {"3453-43525", "Name2", "Cool description!"};
+		String[] input= {"4534-73452", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
+		String[] input2= {"10-12", "Name2", "Cool description!"};
+		String[] input3= {"6531-85634", "Name2", "Cool description!"};
 		WarehouseItemList list = new WarehouseItemList();
 		list.addItem(input[0], input[1], input[2]);
 		list.addItem(input2[0], input2[1], input2[2]);
@@ -350,9 +350,9 @@ class Juint {
 	}
 	@Test 
 	void experationDistinguishesBetweenIdsWhenMultipleExperationDatesPressent5(){
-		String[] input= {"3453-435", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
-		String[] input2= {"3453-4352", "Name2", "Cool description!"};
-		String[] input3= {"3453-43525", "Name2", "Cool description!"};
+		String[] input= {"3545-07370435", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
+		String[] input2= {"452-448352", "Name2", "Cool description!"};
+		String[] input3= {"7-78377", "Name2", "Cool description!"};
 		WarehouseItemList list = new WarehouseItemList();
 		list.addItem(input[0], input[1], input[2]);
 		list.addItem(input2[0], input2[1], input2[2]);
@@ -365,9 +365,9 @@ class Juint {
 	}
 	@Test 
 	void experationDistinguishesBetweenIdsWhenMultipleExperationDatesPressent6(){
-		String[] input= {"3453-435", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
-		String[] input2= {"3453-4352", "Name2", "Cool description!"};
-		String[] input3= {"3453-43525", "Name2", "Cool description!"};
+		String[] input= {"7730-435", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
+		String[] input2= {"453-7834", "Name2", "Cool description!"};
+		String[] input3= {"3453453-40837", "Name2", "Cool description!"};
 		WarehouseItemList list = new WarehouseItemList();
 		list.addItem(input[0], input[1], input[2]);
 		list.addItem(input2[0], input2[1], input2[2]);
@@ -379,7 +379,7 @@ class Juint {
 	}
 	@Test
 	void invalidIdCausesNoErrorsInExperation() {
-		String[] input= {"56465444166846464646464649646868436b", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
+		String[] input= {"708375427", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
 		WarehouseItemList list = new WarehouseItemList();
 		list.addItem(input[0], input[1], input[2]);
 		list.addExperation(input[0], new Date(121,1,25));
@@ -387,7 +387,7 @@ class Juint {
 	}
 	@Test
 	void hasExpired0() {
-		String[] input= {"56465444166846464646464649646868436", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
+		String[] input= {"453245248", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
 		WarehouseItemList list = new WarehouseItemList();
 		list.addItem(input[0], input[1], input[2]);
 		list.addExperation(input[0], new Date(120,0,25));
@@ -395,7 +395,7 @@ class Juint {
 	}
 	@Test
 	void hasExpired1() {
-		String[] input= {"56465444166846464646464649646868436", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
+		String[] input= {"277867", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
 		WarehouseItemList list = new WarehouseItemList();
 		list.addItem(input[0], input[1], input[2]);
 		list.addExperation(input[0], new Date(11,4,2));
@@ -403,7 +403,7 @@ class Juint {
 	}
 	@Test
 	void hasExpired2() {
-		String[] input= {"56465444166846464646464649646868436", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
+		String[] input= {"527857852", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
 		WarehouseItemList list = new WarehouseItemList();
 		list.addItem(input[0], input[1], input[2]);
 		list.addExperation(input[0], new Date(182,5,28));
@@ -411,7 +411,7 @@ class Juint {
 	}
 	@Test
 	void hasExpired3() {
-		String[] input= {"56465444166846464646464649646868436", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
+		String[] input= {"7208967807837", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
 		WarehouseItemList list = new WarehouseItemList();
 		list.addItem(input[0], input[1], input[2]);
 		list.addExperation(input[0], new Date(548,4,5));
@@ -419,7 +419,7 @@ class Juint {
 	}
 	@Test
 	void hasExpired4() {
-		String[] input= {"56465444166846464646464649646868436", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
+		String[] input= {"7038783087", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
 		WarehouseItemList list = new WarehouseItemList();
 		list.addItem(input[0], input[1], input[2]);
 		list.addExperation(input[0], new Date(42,4,9));
@@ -427,7 +427,7 @@ class Juint {
 	}
 	@Test
 	void hasExpired5() {
-		String[] input= {"56465444166846464646464649646868436", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
+		String[] input= {"78034532078", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
 		WarehouseItemList list = new WarehouseItemList();
 		list.addItem(input[0], input[1], input[2]);
 		list.addExperation(input[0], new Date(224,5,30));
@@ -435,7 +435,7 @@ class Juint {
 	}
 	@Test
 	void itemHasNoExperationHasExpired() {
-		String[] input= {"56465444166846464646464649646868436", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
+		String[] input= {"87307827864534", "validName", "klasgfn! iewhbfiBWEG. $120.00?"};
 		WarehouseItemList list = new WarehouseItemList();
 		list.addItem(input[0], input[1], input[2]);
 		assertEquals(false,list.itemHasExpired(input[0]));
